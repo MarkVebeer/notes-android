@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private WebView webView;
     private ProgressBar progressBar;
 
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-// Initialize WebView and ProgressBar
+        // Initialize WebView and ProgressBar
         webView = findViewById(R.id.webView);
         progressBar = findViewById(R.id.progressBar);
 
@@ -37,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
 
-        // Improve performance
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        // Disable cache
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // Force fresh load
         webSettings.setAllowContentAccess(true);
         webSettings.setAllowFileAccess(true);
 
@@ -59,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Load a webpage
         webView.loadUrl("https://notes.nrbrt.hu");
-
-
     }
 
     @Override
@@ -71,6 +68,5 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
-
     }
 }
